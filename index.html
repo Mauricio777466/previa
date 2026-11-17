@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prévia grátis do site da sua loja · MS Tech Soluções</title>
+<meta name="description" content="Veja em 1 minuto, de graça, como ficaria o site da sua loja com catálogo e pedido direto no WhatsApp. Atendemos todo o Brasil.">
+<meta property="og:title" content="Veja grátis como ficaria o site da sua loja">
+<meta property="og:description" content="Catálogo com pedido no WhatsApp. Prévia pronta em 1 minuto, sem compromisso.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --verde:#16A34A; --verde-esc:#15803D; --tinta:#0F172A; --cinza:#64748B; --fundo:#F8FAFC; --linha:#E2E8F0; --amarelo:#FACC15; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:Poppins, system-ui, sans-serif; color:var(--tinta); background:#fff; line-height:1.55; }
+  a { color:inherit; }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 20px; }
+  header.topo { display:flex; align-items:center; justify-content:space-between; padding:18px 0; }
+  .marca { font-weight:800; font-size:18px; letter-spacing:-.3px; }
+  .marca span { color:var(--verde); }
+  .topo a.mini { font-size:14px; font-weight:600; text-decoration:none; color:var(--verde-esc); }
+
+  .hero { background:linear-gradient(160deg,#0B1220 0%,#12233F 55%,#0E3B2A 100%); color:#fff; padding:56px 0 64px; }
+  .hero .grade { display:grid; grid-template-columns:1.05fr .95fr; gap:44px; align-items:center; }
+  .selo { display:inline-block; background:rgba(250,204,21,.15); color:var(--amarelo); border:1px solid rgba(250,204,21,.4); border-radius:999px; padding:6px 14px; font-size:13px; font-weight:600; margin-bottom:18px; }
+  h1 { font-size:clamp(30px,4.6vw,50px); line-height:1.08; letter-spacing:-1.2px; font-weight:800; }
+  h1 em { font-style:normal; color:#4ADE80; }
+  .hero p.sub { margin-top:16px; font-size:18px; color:#CBD5E1; max-width:520px; }
+  .checks { list-style:none; margin-top:22px; display:grid; gap:8px; font-size:15px; color:#E2E8F0; }
+  .checks li::before { content:"✓"; color:#4ADE80; font-weight:800; margin-right:10px; }
+
+  .cartao { background:#fff; color:var(--tinta); border-radius:20px; padding:26px; box-shadow:0 30px 60px -20px rgba(0,0,0,.5); }
+  .cartao h2 { font-size:21px; letter-spacing:-.4px; }
+  .cartao p.d { color:var(--cinza); font-size:14px; margin:4px 0 16px; }
+  label { display:block; font-size:13px; font-weight:600; margin:12px 0 6px; }
+  input, select { width:100%; font:inherit; font-size:15px; padding:12px 14px; border:1.5px solid var(--linha); border-radius:12px; background:#fff; color:var(--tinta); }
+  input:focus, select:focus { outline:none; border-color:var(--verde); box-shadow:0 0 0 3px rgba(22,163,74,.15); }
+  .duas { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  button.cta, a.cta { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; margin-top:18px; background:var(--verde); color:#fff; border:0; border-radius:14px; padding:15px; font:inherit; font-size:16px; font-weight:700; cursor:pointer; text-decoration:none; transition:background .15s, transform .15s; }
+  button.cta:hover, a.cta:hover { background:var(--verde-esc); transform:translateY(-1px); }
+  .nota { font-size:12px; color:var(--cinza); text-align:center; margin-top:10px; }
+  .erro { color:#B91C1C; font-size:13px; margin-top:8px; display:none; }
+  .pronto { display:none; margin-top:14px; padding:12px 14px; border-radius:12px; background:#F0FDF4; border:1px solid #BBF7D0; font-size:14px; }
+  .pronto a { color:var(--verde-esc); font-weight:700; }
+
+  section { padding:72px 0; }
+  .titulo { text-align:center; max-width:640px; margin:0 auto 36px; }
+  .titulo h2 { font-size:clamp(24px,3.2vw,34px); letter-spacing:-.8px; line-height:1.15; }
+  .titulo p { color:var(--cinza); margin-top:10px; }
+  .exemplos { background:var(--fundo); }
+  .galeria { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  .galeria figure { background:#fff; border:1px solid var(--linha); border-radius:16px; overflow:hidden; }
+  .galeria img { width:100%; display:block; }
+  .galeria figcaption { padding:12px 16px; font-size:14px; color:var(--cinza); }
+  .galeria figcaption b { color:var(--tinta); }
+
+  .passos { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; counter-reset:p; }
+  .passo { border:1px solid var(--linha); border-radius:16px; padding:24px; }
+  .passo::before { counter-increment:p; content:counter(p); display:grid; place-items:center; width:38px; height:38px; border-radius:12px; background:#DCFCE7; color:var(--verde-esc); font-weight:800; margin-bottom:14px; }
+  .passo h3 { font-size:17px; margin-bottom:6px; }
+  .passo p { color:var(--cinza); font-size:14.5px; }
+
+  .beneficios { background:var(--tinta); color:#fff; }
+  .beneficios .titulo p { color:#94A3B8; }
+  .bgrid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+  .b { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:16px; padding:20px; }
+  .b .ic { font-size:24px; }
+  .b h3 { font-size:16px; margin:10px 0 4px; }
+  .b p { color:#CBD5E1; font-size:14px; }
+
+  .faq { max-width:760px; margin:0 auto; }
+  details { border-bottom:1px solid var(--linha); padding:16px 0; }
+  summary { cursor:pointer; font-weight:600; list-style:none; display:flex; justify-content:space-between; gap:16px; }
+  summary::after { content:"+"; color:var(--verde); font-weight:800; }
+  details[open] summary::after { content:"−"; }
+  details p { color:var(--cinza); margin-top:8px; font-size:15px; }
+
+  .final { text-align:center; background:linear-gradient(160deg,#0E3B2A,#0B1220); color:#fff; }
+  .final h2 { font-size:clamp(24px,3.4vw,36px); letter-spacing:-.8px; }
+  .final p { color:#CBD5E1; margin:10px auto 24px; max-width:520px; }
+  .final a.cta { width:auto; display:inline-flex; padding:15px 30px; }
+  footer { padding:28px 0; font-size:13px; color:var(--cinza); text-align:center; }
+  footer a { color:var(--verde-esc); font-weight:600; text-decoration:none; }
+
+  @media (max-width: 860px) {
+    .hero .grade, .galeria, .passos { grid-template-columns:1fr; }
+    .bgrid { grid-template-columns:1fr 1fr; }
+    .hero { padding:36px 0 44px; }
+  }
+  @media (max-width: 480px) { .duas, .bgrid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <header class="topo">
+      <div class="marca" style="color:#fff">MS Tech <span>Soluções</span></div>
+    </header>
+    <div class="grade">
+      <div>
+        <div class="selo">🎁 Prévia grátis · sem compromisso</div>
+        <h1>Veja agora como ficaria o <em>site da sua loja</em></h1>
+        <p class="sub">Catálogo com fotos e preços e pedido chegando direto no seu WhatsApp. Preencha ao lado e receba a prévia em 1 minuto.</p>
+        <ul class="checks">
+          <li>Feito para o celular, onde o seu cliente está</li>
+          <li>Pedido pronto no WhatsApp, sem taxa de aplicativo</li>
+          <li>Atendemos lojas de todo o Brasil</li>
+        </ul>
+      </div>
+
+      <form class="cartao" id="form" novalidate>
+        <h2>Quero minha prévia grátis</h2>
+        <p class="d">Você recebe as imagens no WhatsApp. Leva 1 minuto.</p>
+        <label for="loja">Nome da loja</label>
+        <input id="loja" maxlength="40" placeholder="Ex.: Bella Moda" autocomplete="organization">
+        <div class="duas">
+          <div>
+            <label for="ramo">Tipo de negócio</label>
+            <select id="ramo">
+              <option value="roupas">Roupas e calçados</option>
+              <option value="comida">Restaurante, lanches, açaí</option>
+              <option value="beleza">Salão, estética, barbearia</option>
+              <option value="farmacia">Farmácia</option>
+              <option value="saude">Clínica, consultório</option>
+              <option value="pet">Pet shop, veterinária</option>
+              <option value="construcao">Material de construção</option>
+              <option value="servicos">Oficina, serviços</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <div>
+            <label for="cidade">Cidade</label>
+            <input id="cidade" maxlength="30" placeholder="Ex.: Belém-PA" autocomplete="address-level2">
+          </div>
+        </div>
+        <label for="vende">O que vocês vendem? <span style="font-weight:400;color:var(--cinza)">(opcional)</span></label>
+        <input id="vende" maxlength="80" placeholder="Ex.: moda feminina e acessórios">
+        <div class="erro" id="erro">Preencha o nome da loja e a cidade.</div>
+        <button class="cta" type="submit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.2.5.4.1.1.1.7-.1 1.3z"/></svg>
+          Receber minha prévia no WhatsApp
+        </button>
+        <div class="pronto" id="pronto">Tudo certo! Se o WhatsApp não abriu sozinho, <a id="link" href="#" target="_blank" rel="noopener">toque aqui para abrir</a>.</div>
+        <p class="nota">Grátis e sem compromisso. Não pedimos cartão.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<section class="exemplos">
+  <div class="wrap">
+    <div class="titulo">
+      <h2>É assim que a prévia chega pra você</h2>
+      <p>3 telas no celular: página inicial, catálogo com pedido no WhatsApp e contato. Exemplos de lojas fictícias.</p>
+    </div>
+    <div class="galeria">
+      <figure><img src="img/bella-moda.jpg" alt="Prévia de site para loja de roupas" loading="lazy"><figcaption><b>Loja de roupas</b> · catálogo com tamanhos e pedido no WhatsApp</figcaption></figure>
+      <figure><img src="img/sabor-da-casa.jpg" alt="Prévia de site para restaurante" loading="lazy"><figcaption><b>Restaurante e delivery</b> · cardápio online sem taxa de aplicativo</figcaption></figure>
+      <figure><img src="img/casa-forte.jpg" alt="Prévia de site para material de construção" loading="lazy"><figcaption><b>Material de construção</b> · pedido de orçamento pelo celular</figcaption></figure>
+      <figure><img src="img/petlar.jpg" alt="Prévia de site para pet shop" loading="lazy"><figcaption><b>Pet shop</b> · produtos e banho e tosa no mesmo lugar</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="titulo"><h2>Como funciona</h2><p>Simples, rápido e você aprova tudo antes.</p></div>
+    <div class="passos">
+      <div class="passo"><h3>Você pede a prévia</h3><p>Preenche o nome da loja e a cidade. Em 1 minuto as imagens chegam no seu WhatsApp.</p></div>
+      <div class="passo"><h3>Gostou? A gente conversa</h3><p>Você conta o que vende e recebe a proposta com valor e prazo, sem compromisso.</p></div>
+      <div class="passo"><h3>Seu site no ar</h3><p>Montamos com as suas fotos, produtos e cores. Você aprova e o site vai ao ar com suporte depois.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="beneficios">
+  <div class="wrap">
+    <div class="titulo"><h2>O que a sua loja ganha</h2><p>Um endereço próprio na internet, do jeito que o cliente gosta de comprar.</p></div>
+    <div class="bgrid">
+      <div class="b"><div class="ic">🛍️</div><h3>Catálogo sempre aberto</h3><p>O cliente vê produtos e preços a qualquer hora, sem você responder um por um.</p></div>
+      <div class="b"><div class="ic">💬</div><h3>Pedido no WhatsApp</h3><p>O pedido chega pronto, com itens e quantidades, direto no seu número.</p></div>
+      <div class="b"><div class="ic">📍</div><h3>Achado no Google</h3><p>Quem procura o que você vende na sua cidade encontra a sua loja.</p></div>
+      <div class="b"><div class="ic">💸</div><h3>Sem taxa por venda</h3><p>Diferente dos aplicativos, o site é seu e a venda é toda sua.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="titulo"><h2>Perguntas frequentes</h2></div>
+    <div class="faq">
+      <details><summary>A prévia é grátis mesmo?</summary><p>Sim. Você recebe as imagens no WhatsApp sem pagar nada e sem compromisso de contratar.</p></details>
+      <details><summary>Vocês atendem a minha cidade?</summary><p>Atendemos lojas de todo o Brasil. Todo o atendimento é pelo WhatsApp e por vídeo, então a distância não atrapalha.</p></details>
+      <details><summary>Quanto custa o site?</summary><p>Depende do tamanho do catálogo e do que a sua loja precisa. Depois da prévia você recebe uma proposta com valor e prazo certinhos.</p></details>
+      <details><summary>Preciso entender de tecnologia?</summary><p>Não. Você manda as fotos e as informações e nós cuidamos de tudo: domínio, hospedagem e configuração no Google.</p></details>
+      <details><summary>Já vendo pelo Instagram. Por que ter um site?</summary><p>O site organiza o catálogo com preços, aparece no Google e transforma o "quanto custa?" do direct em pedido pronto no WhatsApp.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Pronto para ver o site da sua loja?</h2>
+    <p>Leva 1 minuto e é grátis.</p>
+    <a class="cta" href="#form">Quero minha prévia grátis</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>MS Tech Soluções</b> · Sites e sistemas para comércios de todo o Brasil<br>
+    <a href="https://mauricio777466.github.io" target="_blank" rel="noopener">Portfólio</a> ·
+    <a href="https://www.instagram.com/mauricio__oficialll" target="_blank" rel="noopener">Instagram @mauricio__oficialll</a>
+  </div>
+</footer>
+
+<script>
+  // ⚠️ Número do WhatsApp que recebe os pedidos de prévia (o chip do ZapBot), só dígitos com 55 + DDD.
+  const WHATSAPP = '5596981157791';
+
+  const $ = id => document.getElementById(id);
+  $('form').addEventListener('submit', e => {
+    e.preventDefault();
+    const loja = $('loja').value.trim(), cidade = $('cidade').value.trim();
+    if (!loja || !cidade) { $('erro').style.display = 'block'; return; }
+    $('erro').style.display = 'none';
+    const ramo = $('ramo').value, vende = $('vende').value.trim();
+    const msg = `Quero minha prévia grátis! Loja: ${loja} | Ramo: ${ramo} | Cidade: ${cidade}` + (vende ? ` | Vende: ${vende}` : '');
+    const url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
+    $('link').href = url;
+    $('pronto').style.display = 'block';
+    try { window.top.location.href = url; } catch { try { window.location.href = url; } catch {} }
+  });
+</script>
+</body>
+</html>
